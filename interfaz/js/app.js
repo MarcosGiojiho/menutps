@@ -22,6 +22,12 @@ const cerrarMenu = () => {
     });
 }
 
+const cerrarMenuEvento = (e) => {
+    if (e.type == "click" || e.keyCode == 27) {
+        cerrarMenu()
+    }
+}
+
 window.addEventListener('message', function(event) {
     if (event.data.action === 'abrirMenu') {
         abrirMenu()
@@ -30,3 +36,4 @@ window.addEventListener('message', function(event) {
 
 document.querySelectorAll("button.button").forEach(boton => boton.addEventListener('click', enviarA))
 document.querySelector("#cerrar").addEventListener('click', cerrarMenu)
+document.addEventListener("keydown", cerrarMenu)
